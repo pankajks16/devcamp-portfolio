@@ -1,10 +1,15 @@
 class BlogsController < ApplicationController
-  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :set_blog, only: [:show, :edit, :update, :destroy, :portfolio_status]
+  # before_action makes the method (wriiten after it in the above line as syntax) to execute before the actions given 
+  # in this controller class. only and except option are there to specifically include or exculdes some methods for this
+  # action
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
+    @blogs = Blog.all.order('created_at DESC')  # This is done in order to maintain the order after update on UI. 
+                                                # Else the updated record will move down the screen.
+    #@blogs = Blog.all           # This one is the default scaffold generated one.
   end
 
   # GET /blogs/1
@@ -61,10 +66,24 @@ class BlogsController < ApplicationController
     end
   end
 
+
+  def portfolio_status
+    if @blog.published?
+      @blog.draft!
+    elsif @blog.draft?
+      @blog.published!
+    end
+
+    respond_to do |format|
+      format.html { redirect_to blogs_url, notice: 'Blog status was successfully updated.' }
+    end
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_blog
-      @blog = Blog.find(params[:id])
+      @blog = Blog.friendly.find(params[:id]) #friendly is used to fetch the record based on the friendly url present
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,6 @@
+<h1>Show Page</h1>
+
+<h3><%= image_tag @portfolio_item.main_image unless @portfolio_item.main_image.nil? %></h3>
+<p><%= @portfolio_item.title %></p>
+<em><%= @portfolio_item.subtitle %></em>
+<p><%= @portfolio_item.body %></p>
