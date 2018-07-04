@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   										  # natural routes for the passed value in array.
   resources :blogs do 
     member do
-      get 'portfolio_status'
+      get 'portfolio_status'   # learn more on: http://guides.rubyonrails.org/routing.html#adding-member-routes
     end
   end
 
