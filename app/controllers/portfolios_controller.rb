@@ -1,11 +1,22 @@
 class PortfoliosController < ApplicationController
 	def index
-		@portfolios_items = Portfolio.all.order("created_at DESC")
+		#@portfolios_items = Portfolio.all.order("created_at DESC")
+		# @portfolios_items = Portfolio.where(subtitle: "Ruby On Rails")
+		# @portfolios_items = Portfolio.where(subtitle: "Angular")
 		#@portfolios_items = Portfolio.all
+		@portfolios_items = Portfolio.all
+	end
+
+	def angular
+		@angular_items = Portfolio.angular_items
+	end
+
+	def ror
+		@ror_items = Portfolio.ruby_on_rails_items	
 	end
 
 	def new
-		@portfolios_item = Portfolio.new
+		@portfolios_item = Portfolio.new	
 	end
 
 	def create

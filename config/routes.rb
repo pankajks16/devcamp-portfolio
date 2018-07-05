@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   get 'about-me', to: 'pages#about'
   get 'contact', to: 'pages#contact'
+  get 'angular-items', to: 'portfolios#angular'
+  get 'ror-items', to: 'portfolios#ror'
 
   resources :portfolios, except: [:show]  # except option excludes the generation of 
   										  # natural routes for the passed value in array.
