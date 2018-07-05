@@ -16,14 +16,28 @@ class Portfolio < ApplicationRecord
 	validates_presence_of :title, :body, :main_image, :thumb_image
 
 	scope :ruby_on_rails_items, -> { where(subtitle: "Ruby On Rails") }
+	after_initialize :set_defaults	# This is a call back at the time of new action. 
+									# NEW action is the intialization phase.
 
 	def self.angular_items
 		where(subtitle: "Angular")
 	end
 
+	def set_defaults
+		self.main_image ||= "http://via.placeholder.com/600x400"
+		self.thumb_image ||= "http://via.placeholder.com/350x200"
+
+		# The above code is equivalent to:
+		
+		# if self.main_image == nil
+		# 	self.main_image = "http://via.placeholder.com/600x400"
+		# end
+
+		# So the above condition is equal to the ||= operator which means that apply the
+		# value on RHS only if the LHS value is absent or nil else use the existing value.
+	end
+
 	# def self.ror
 	# 	where(subtitle: "Ruby On Rails")
 	# end
-
-
 end
