@@ -1,5 +1,7 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p>
+ -->
 
+<h1> <%= "Hi, " + current_user.first_name if current_user %></h1>
 <h1>Blogs</h1>
 
 <table>
@@ -15,7 +17,7 @@
     <% @blogs.each do |blog| %>
     <%# if blog.status == "published" %>
       <tr>
-        <td><%= blog.title %></td>
+        <td><%= blog.title.upcase %></td>
         <td><%= blog.body %></td>
         <td><%= link_to blog.status, portfolio_status_blog_path(blog) %></td>
         <td><%= link_to 'Show', blog %></td>

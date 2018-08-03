@@ -15,6 +15,12 @@
     <%= form.text_area :body %>
   </div>
 
+  <div>
+    <%= form.fields_for :technologies do |technology_form| %>
+      <%= technology_form.text_field :name, placeholder: "Enter Name" %> 
+    <% end %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

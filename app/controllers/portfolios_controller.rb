@@ -1,23 +1,36 @@
 class PortfoliosController < ApplicationController
 	def index
-		@portfolios_items = Portfolio.all.order("created_at DESC")
+		#@portfolios_items = Portfolio.all.order("created_at DESC")
+		# @portfolios_items = Portfolio.where(subtitle: "Ruby On Rails")
+		# @portfolios_items = Portfolio.where(subtitle: "Angular")
 		#@portfolios_items = Portfolio.all
+		@portfolios_items = Portfolio.all
+	end
+
+	def angular
+		@angular_items = Portfolio.angular_items
+	end
+
+	def ror
+		@ror_items = Portfolio.ruby_on_rails_items	
 	end
 
 	def new
 		@portfolios_item = Portfolio.new
+		3.times { @portfolios_item.technologies.build }
 	end
 
 	def create
-    @portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body))
+    	@portfolio_item = Portfolio.new(params.require(:portfolio).permit(:title, :subtitle, :body, 
+    		technologies_attributes: [:name]))
     
-    respond_to do |format|
-      if @portfolio_item.save
-        format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
+	    respond_to do |format|
+	      if @portfolio_item.save
+	        format.html { redirect_to portfolios_path, notice: 'Portfolio was successfully created.' }
+	      else
+	        format.html { render :new }
+	      end
+	    end
 	end
 
 	def edit
