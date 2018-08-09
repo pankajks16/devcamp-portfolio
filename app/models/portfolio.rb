@@ -16,7 +16,8 @@ class Portfolio < ApplicationRecord
 	has_many :technologies, dependent: :destroy   
 
 	# dependent: :destroy allows us to delete the associated records(techonologies), else the error would pop up like:
-	# ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "portfolios" violates foreign key constraint "fk_rails_cc5ab4a1c3" on table "technologies"
+	# ActiveRecord::InvalidForeignKey (PG::ForeignKeyViolation: ERROR:  update or delete on table "portfolios" violates 
+	# foreign key constraint "fk_rails_cc5ab4a1c3" on table "technologies"
 	# DETAIL:  Key (id)=(11) is still referenced from table "technologies"
 
 	accepts_nested_attributes_for :technologies, 
