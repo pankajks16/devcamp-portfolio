@@ -10,11 +10,15 @@ class BlogsController < ApplicationController
     @blogs = Blog.all.order('created_at DESC')  # This is done in order to maintain the order after update on UI. 
                                                 # Else the updated record will move down the screen.
     #@blogs = Blog.all           # This one is the default scaffold generated one.
+    @page_title = "Blog | My Portfolio Blog"  # Here we are overriding the value of @page_title variable present in the 
+                                              # application_controller file. So, this value gets render when index page is accessed.
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @page_title = @blog.title
+    @seo_keywords = @blog.title
   end
 
   # GET /blogs/new
