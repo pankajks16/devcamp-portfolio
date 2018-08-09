@@ -4,6 +4,8 @@ class BlogsController < ApplicationController
   # in this controller class. only and except option are there to specifically include or exculdes some methods for this
   # action
 
+  layout "blog"
+
   # GET /blogs
   # GET /blogs.json
   def index
