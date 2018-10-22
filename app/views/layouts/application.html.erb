@@ -18,10 +18,12 @@
 
     <%= render "shared/nav", location: 'bottom' %>
     
-    <% if session[:source] %>
-      <p>Thanks for visiting me from <b><i><%= session[:source] %></i></b></p>
-    <% end %>
+    <%= source_helper %>
+    <%# if session[:source] %>
+      <!-- <p>Thanks for visiting me from <b><i><%#= session[:source] %></i></b></p> -->
+    <%# end %>
 
     <!--  <%#= debug(params) if Rails.env.development? %> -->
+
   </body>
 </html>

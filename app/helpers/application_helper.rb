@@ -12,4 +12,11 @@ module ApplicationHelper
 	      (link_to "Login", new_user_session_path)
 	    end
 	end
+
+	def source_helper
+		if session[:source]
+			msg = "Thanks for visiting us from <b><i>#{session[:source]}</i></b>".html_safe
+			content_tag(:p, msg, class: "demo-class")
+		end
+	end
 end
