@@ -3,11 +3,11 @@ class PortfoliosController < ApplicationController
 	layout "portfolio"
 
 	def index
-		#@portfolios_items = Portfolio.all.order("created_at DESC")
-		# @portfolios_items = Portfolio.where(subtitle: "Ruby On Rails")
-		# @portfolios_items = Portfolio.where(subtitle: "Angular")
+		@portfolios_items = Portfolio.all.order("created_at DESC")
+		#@portfolios_items = Portfolio.where(subtitle: "Ruby On Rails")
+		#@portfolios_items = Portfolio.where(subtitle: "Angular")
 		#@portfolios_items = Portfolio.all
-		@portfolios_items = Portfolio.all
+		#@portfolios_items = Portfolio.all
 	end
 
 	def angular
@@ -19,8 +19,8 @@ class PortfoliosController < ApplicationController
 	end
 
 	def new
-		@portfolios_item = Portfolio.new
-		3.times { @portfolios_item.technologies.build }
+		@portfolio_item = Portfolio.new
+		3.times { @portfolio_item.technologies.build }
 	end
 
 	def create
@@ -37,6 +37,7 @@ class PortfoliosController < ApplicationController
 
 	def edit
 		@portfolio_item = Portfolio.find(params[:id])
+		#3.times { @portfolio_item.technologies.build }
 	end
 
 	def update
