@@ -1,2 +1,14 @@
 <h1>Contact</h1>
 <p>Find me in app/views/pages/contact.html.erb</p>
+<h2>ActionView Helpers</h2>
+
+Phone: <%= number_to_phone "97256048841" %></br>
+
+Currency: <%= number_to_currency "97256048841" %></br>
+
+Distance of time (Fri, 03 Aug 2018 07:34:51 UTC +00:00) in words from now is:
+<%= distance_of_time_in_words("Fri, 03 Aug 2018 07:34:51 UTC +00:00", Time.now) %> Ago </br>
+
+Percentage of a number say 180.8686 is given by <%= number_to_percentage(80.8686) %></br>
+
+Number 123456789023 with delimiter usage is shown as <%= number_with_delimiter(12345678901) %></br>
