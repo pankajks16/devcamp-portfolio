@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/pankajks16/pk_foot_tool
+  revision: b77a3fab45bdabf93532acf0bc06fe3869781c9c
+  specs:
+    pk_foot_tool (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -198,6 +204,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
+  pk_foot_tool!
   puma (~> 3.7)
   rails (~> 5.1.6)
   sass-rails (~> 5.0)

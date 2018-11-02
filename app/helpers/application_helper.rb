@@ -19,4 +19,8 @@ module ApplicationHelper
 			content_tag(:p, msg, class: "demo-class")
 		end
 	end
+
+	def copyright_generator
+		PkFootTool::Renderer.copyright("Pankaj Kumar Singh", "All Rights Reserved")
+	end
 end
