@@ -1,6 +1,8 @@
 class PortfoliosController < ApplicationController
-
 	layout "portfolio"
+	
+	access all: [:show, :index, :angular, :ror], user: {except: [:destroy, :edit, :update, :new, :create]}, site_admin: :all
+
 
 	def index
 		@portfolios_items = Portfolio.all.order("created_at DESC")
