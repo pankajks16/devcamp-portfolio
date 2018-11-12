@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'blogs#index'
   
   get 'about-me', to: 'pages#about'
+  get 'home', to: 'pages#home'
   get 'contact', to: 'pages#contact'
   get 'angular-items', to: 'portfolios#angular'
   get 'ror-items', to: 'portfolios#ror'
