@@ -1,7 +1,8 @@
 <!-- <p id="notice"><%= notice %></p>
  -->
 
-<h1> <%= "Hi, " + current_user.first_name %></h1>
+<h1> <%= "Hi, " + current_user.first_name %> <%= " - " + current_user.role.to_s.capitalize if current_user.instance_of?(User) %></h1>
+<%#= current_user.inspect %>
 <h1>Blogs</h1>
 
 <table>
@@ -32,7 +33,7 @@
 
 <br>
 
-<%= link_to 'New Blog', new_blog_path %>
+<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
 
 <hr>
 
