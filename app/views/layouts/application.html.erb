@@ -13,20 +13,20 @@
   <body class="text-center">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <%= render "shared/application_nav", location: 'bottom' %>
+      <%= login_helper %>
 
-    <%= render "shared/nav", location: 'bottom' %>
-    <%= login_helper %>
+      <%= yield %>
 
-    <%= yield %>
+      <%= source_helper %>
+      
+      <%= copyright_generator %>
+      <%# if session[:source] %>
+        <!-- <p>Thanks for visiting me from <b><i><%#= session[:source] %></i></b></p> -->
+      <%# end %>
 
-    <%= source_helper %>
-    
-    <%= copyright_generator %>
-    <%# if session[:source] %>
-      <!-- <p>Thanks for visiting me from <b><i><%#= session[:source] %></i></b></p> -->
-    <%# end %>
-
-    <!--  <%#= debug(params) if Rails.env.development? %> -->
-
+      <!--  <%#= debug(params) if Rails.env.development? %> -->
+    </div>
   </body>
 </html>
