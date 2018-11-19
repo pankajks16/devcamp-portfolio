@@ -3,8 +3,8 @@ module ApplicationHelper
 		"<h3> Pankaj Sample helper </h3>".html_safe
 	end
 
-	def login_helper style
-		if current_user.is_a?(GuestUser)
+	def login_helper style = ''				# added a default value '' so that if nothing is passed then this 
+		if current_user.is_a?(GuestUser)	# will handle it. The empty string handles this.
 	      	(link_to "Register", new_user_registration_path, class: style) + " ".html_safe + 
 	      	(link_to "Login", new_user_session_path, class: style)
 	    else
