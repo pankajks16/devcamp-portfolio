@@ -6,7 +6,7 @@ class BlogsController < ApplicationController
 
   layout "blog"
 
-  access all: [:show, :index], user: {except: [:destroy, :edit, :update, :new, :create]}, site_admin: :all
+  access all: [:show, :index], user: {except: [:destroy, :edit, :update, :new, :create, :portfolio_status]}, site_admin: :all
 
   # GET /blogs
   # GET /blogs.json
