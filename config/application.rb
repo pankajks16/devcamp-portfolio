@@ -28,6 +28,12 @@ module DevcampPortfolio
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    console do
+      ActiveRecord::Base.connection
+    end
+
+    #config.logger = Logger.new("#{Rails.root}/public/abc.log")
+
     #config.action_controller.permit_all_parameters = true  
   end
 end
