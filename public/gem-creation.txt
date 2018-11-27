@@ -1,0 +1,147 @@
+
+Steps to Make a Ruby gem from scratch:
+
+1. Create a folder in which we will create the project structure to create a RubyGem.
+	Ex: mkdir gem-folder
+	
+2. Now go into the directory using : 
+	cd gem-folder
+	
+3. Then select the version of the Ruby for which you wish to create the gem. It will select the default one by default:
+	$ rvm 2.5.1
+	
+4. NOTE: While executing the below command make sure that the gem_name which you are giving should be unique and 
+   should not be present in the RubyGem library on the web.
+   
+   Execute the following command in order to produce the gem related skeleton folder structure inside the gem-folder directory which will
+   get bundled in the future to form the .gem file.
+   
+   $ bundle gem gem_name
+   
+   e.g: $ bundle gem foot_tool
+   
+
+5. Now open the file "gem_name.gemspec" present inside the project structure created. It will contain mainy specs of which we need to 
+	edit few one according to our requirement. Wherever the TODO is mentioned, there we need to edit the text put our own gem specific
+	details. 
+	
+	Remove the following line in the .gemspec file in order to enable your gem to get pushed to the remote host RubyGems.org
+	------------------
+	#Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
+	#to allow pushing to a single host or delete this section to allow pushing to any host.
+
+	if spec.respond_to?(:metadata)
+		spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+	else
+		raise "RubyGems 2.0 or newer is required to protect against " \
+		"public gem pushes."
+	end
+	------------------
+	
+6. Edit the spec.summary, spec.description, spec.homepage to our gem specific related. In spec.homepage, use the url 
+	like "http://sample.com". Dont use localhost:3000 because it will throw an error while building the gem that invalid url.
+
+7. Now we have to use the lib folder. There will be a ruby file .rb named with the name of the gem. We need to use that file to write
+   the code which will be the function of the gem. This file contain a module with the name of the project in the Capitalize form.
+	e.g: if project name is gem_name then the name of the module is GemName.
+
+	
+8. Now this project structure comes with the .git enabled and a .gitignore file. Now after the coding is done, then git add everything 
+	and commit the changes on the local and now create the repository on the github so that we can push it on the remote repository to 
+	make it globally available. 
+	
+	
+9. After creating a repository on the Github, then use git remote add origin "URL to the repository" and the git push. It will send all the
+	code to the remote github repository. Then the code is available to all and ready to get hosted on the RubyGems after sometime.
+	
+10. Now include the "*.gem" in the .gitignore file in order to avoid the .gem file to be pushed on the remote repository. 
+	Because after executing a specific command, we are going to create a .gem file on our local system. That is specific to our system.
+	We dont want it to be present on the other computer as that .gem file may show some error while buiding on other system. 
+	So, we have to avoid the push of .gem file.
+	
+11. Now execute the following command in order to create a gem on the local machine inside the current directory. After that we will push 
+	the code in the gem project to the remote server.
+	
+	$ gem build gem_name.gemspec
+	
+	This will build the rubygem and we can see a file with the extension .gem and with the name and version mentioned.
+	
+12. Now add, commit and push the code to the github server.
+
+13. Now in our any other porject we can add this gem by mentioning it in the GemFile and use it by running bundle install. The steps to do 
+	it is as follow:
+	
+	In Gemfile:
+	gem 'gem_name', git: "github URL to the gem repository"
+	
+	and then on terminal,
+	
+	$ bundle install
+	
+14. Then the Gem is ready in the application to be used accordingly.
+
+
+
+
+STEPS TO PUSH A GEM TO RUBYGEMS:
+
+1. Commit all the changes in the gem project structure.
+
+2. Now run the command:
+	bundle exec rake release
+	
+	It will throw error stating that rake gem not found. kindle bundle install. So, run bundle install to install the rake.
+	
+	
+3. After the bundle install, run again "bundle exec rake release" in order to release the gem to rubygems.
+
+	so, the following texts pops up on terminal while in process to push the gem into rubygems.org :
+	
+	pk_foot_tool 0.1.1 built to pkg/pk_foot_tool-0.1.1.gem.
+	Tagged v0.1.1.
+	Pushed git commits and tags.
+	
+	and cursor keeps blinking on order to accept the email and password. These email and password credentials are the details of the 
+	RubyGems.org account which we have created on it. If enter key pressed twice then it will show:
+	
+	rake aborted!
+Enter your RubyGems.org credentials.
+Don't have an account yet? Create one at https://rubygems.org/sign_up
+   Email:   Password:   
+
+HTTP Basic: Access denied.
+/home/pankaj/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:24:in `eval'
+/home/pankaj/.rvm/gems/ruby-2.5.1/bin/ruby_executable_hooks:24:in `<main>'
+Tasks: TOP => release => release:rubygem_push
+(See full trace by running task with --trace)
+
+
+
+4. So, when the cursor blinks then start to enter your email and then press enter, and then start typing password and press enter.
+
+After sometime, it show that it is published. The text would appear as following when a successful release is done:
+
+pankaj@pankaj-VirtualBox:~/practice_rails/creating-copyright-gem/pk_foot_tool$ bundle exec rake release
+
+o/p:
+pk_foot_tool 0.1.1 built to pkg/pk_foot_tool-0.1.1.gem.
+Tag v0.1.1 has already been created.         ---------->    #### This meesage came bcoz in previous unsuccessful step, the gem was already 
+pankajks.ece@gmail.com										#### created.
+
+
+Pushed pk_foot_tool 0.1.1 to rubygems.org
+
+
+Now in our rubygems account, we can see the gem name under our profile.
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
