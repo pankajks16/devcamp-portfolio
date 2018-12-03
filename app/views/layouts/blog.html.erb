@@ -13,24 +13,22 @@
   <body>
    <!--  <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p> -->
-   
     <%= render "shared/blog_nav" %>
-
-
     <div class="container">
-
-      <%= yield %>
-
+      <div class="row">
+        <%= yield %>
+        <%= render "shared/blog_sidebar" %>
+      </div>
+      
       <footer class="blog-footer">
-      <p>Blog template built for <a target="_blank" href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://www.google.com" target="_blank">@mdo</a>.</p>
-      <p>
+        <p>Blog template built for <a target="_blank" href="https://getbootstrap.com/">Bootstrap</a> by <a href="https://www.google.com" target="_blank">@mdo</a>.</p>
+        <p>
         <%= copyright_generator %> </br></br>
         <a href="#">Back to top</a>
-      </p>
+        </p>
       </footer>
 
       <%= source_helper %>
-
       <!--  <%#= debug(params) if Rails.env.development? %> -->
     </div>
   </body>
