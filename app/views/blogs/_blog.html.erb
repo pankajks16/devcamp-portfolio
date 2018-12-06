@@ -1,6 +1,13 @@
 <div class="blog-post">
-	<h2 class="blog-post-title"><%= link_to blog.title.upcase, blog %></h2>
-	<p class="blog-post-meta"><%= distance_of_time_in_words(blog.created_at, Time.now) %> ago</p>
+	<h2 class="blog-post-title" ><%= link_to blog.title.to_s.titleize, blog %></h2>
+	<% created_at = blog.created_at %>
+	<% updated_at = blog.updated_at %>
+	<% if created_at == updated_at %>
+		<p class="blog-post-meta">Created <%= distance_of_time_in_words(blog.created_at, Time.now) %></p>
+	<% else %>
+	<p class="blog-post-meta">Created <%= distance_of_time_in_words(blog.created_at, Time.now) %> ago </br>
+	Updated <%= distance_of_time_in_words(blog.updated_at, Time.now) %> ago</p>
+	<% end %>
 	<p><%= blog.body %></p>
 	<% if logged_in?(:site_admin) %>
 		<p class="blog-post-meta">
