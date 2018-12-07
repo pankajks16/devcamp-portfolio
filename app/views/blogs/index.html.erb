@@ -1,7 +1,4 @@
-<!-- <p id="notice"><%= notice %></p>
- -->
-<h1> <%= "Hi, " + current_user.first_name %> <%= " - You are a " + current_user.role.to_s.capitalize if current_user.instance_of?(User) %></h1>
-<%#= current_user.inspect %>
+<h1 class="mt20"> <%= "Hi, " + current_user.first_name %> <%= " - You are a " + current_user.role.to_s.capitalize if current_user.instance_of?(User) %></h1>
 </br>
 <div class="col-md-12">
   <%= link_to 'Write a New Blog', new_blog_path if logged_in?(:site_admin) %>
