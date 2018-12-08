@@ -6,7 +6,7 @@
 @import "font-awesome";
 
 :root {
-  --jumbotron-padding-y: 3rem;
+  --jumbotron-padding-y: 2rem;
 }
 
 .jumbotron {
@@ -43,10 +43,17 @@ footer p {
   margin-bottom: .25rem;
 }
 
+
+/* =========== Custom styles ============= */
+
 .mt20 {
   margin-top: 20px;
 }
 
 .mt30 {
   margin-top: 30px;
+}
+
+.portfolio-form {
+  padding: 20px;
 }

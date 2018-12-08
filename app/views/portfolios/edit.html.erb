@@ -1,3 +1,8 @@
-<h2>Edit the Portfolio item</h2>
-
-<%= render 'form', portfolio_item: @portfolio_item %>
+<div class="container portfolio-form">
+	<div class="row">
+		<div class="col-md-6"><h2>Edit the Portfolio item</h2></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-2"><a href="/portfolios">View all portfolios</a></div>
+	</div>
+	<%= render 'form', portfolio_item: @portfolio_item %>
+</div>
