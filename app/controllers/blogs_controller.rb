@@ -6,16 +6,17 @@ class BlogsController < ApplicationController
 
   layout "blog"
 
-  access all: [:show, :index], user: {except: [:destroy, :edit, :update, :new, :create]}, site_admin: :all
+  access all: [:show, :index], user: {except: [:destroy, :edit, :update, :new, :create, :portfolio_status]}, site_admin: :all
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all.order('created_at DESC')  # This is done in order to maintain the order after update on UI. 
+    #@blogs = Blog.all.order('created_at DESC')  # This is done in order to maintain the order after update on UI. 
                                                 # Else the updated record will move down the screen.
     #@blogs = Blog.all           # This one is the default scaffold generated one.
     @page_title = "Blog | My Portfolio Blog"  # Here we are overriding the value of @page_title variable present in the 
                                               # application_controller file. So, this value gets render when index page is accessed.
+    @blogs = Blog.all.order('created_at DESC').page(params[:page]).per(4)                              
   end
 
   # GET /blogs/1
@@ -83,7 +84,7 @@ class BlogsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to blogs_url, notice: 'Blog status was successfully updated.' }
+      format.html { redirect_to blogs_url , notice: 'Blog status was successfully updated.' }
     end
 
   end

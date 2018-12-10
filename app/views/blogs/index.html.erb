@@ -1,40 +1,12 @@
-<!-- <p id="notice"><%= notice %></p>
- -->
-
-<h1> <%= "Hi, " + current_user.first_name %> <%= " - " + current_user.role.to_s.capitalize if current_user.instance_of?(User) %></h1>
-<%#= current_user.inspect %>
-<h1>Blogs</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-   <%= render @blogs %>
-    <!-- <%#= @blogs.each do |blog| %> -->
-    <%# if blog.status == "published" %>
-     <!--  <tr>
-        <td><%#= blog.title.upcase %></td>
-        <td><%#= blog.body %></td>
-        <td><%#= link_to blog.status, portfolio_status_blog_path(blog) %></td>
-        <td><%#= link_to 'Show', blog %></td>
-        <td><%#= link_to 'Edit', edit_blog_path(blog) %></td>
-        <td><%#= link_to 'Delete Blog', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr> -->
-    <%# end %>
-    <!-- <%# end %> -->
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Blog', new_blog_path if logged_in?(:site_admin) %>
-
+<h1 class="col-md-12 mt20"> <%= "Hi, " + current_user.first_name %> <%= " - You are a " + current_user.role.to_s.capitalize if current_user.instance_of?(User) %></h1>
+</br>
+<div class="col-md-12">
+  <%= link_to 'Write a New Blog', new_blog_path if logged_in?(:site_admin) %>
+</div>
+<h1 class="col-md-12">Blogs</h1>
+<div class="col-md-8 blog-main">
+  <%= paginate @blogs %>
+  <%= render @blogs %>
+  <%= paginate @blogs %>
+</div>
 <hr>
-
-<%= sample_helper %>

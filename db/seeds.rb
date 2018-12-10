@@ -23,11 +23,7 @@ puts "3 topics created"
 			dolore magna aliqua. Ut enim ad minim veniam, 
 			quis nostrud exercitation ullamco laboris nisi 
 			ut aliquip ex ea commodo consequat. Duis aute 
-			irure dolor in reprehenderit in voluptate velit 
-			esse cillum dolore eu fugiat nulla pariatur. 
-			Excepteur sint occaecat cupidatat non proident, 
-			sunt in culpa qui officia deserunt mollit anim 
-			id est laborum.",
+			irure dolor.",
 		topic_id: Topic.last.id 
 	)
 end
@@ -79,3 +75,25 @@ puts "9 Portfolio items created"
 end
 
 puts "3 technologies created"
+
+
+u = User.create!(email: "test@sample.com", name: "Pankaj Kumar Singh", password: "password", password_confirmation: "password", role: "site_admin") rescue nil
+
+if u
+	puts "1 admin created"
+else
+	puts "Admin not created"
+end
+
+
+3.times do |x|
+	User.create!(
+		email: "test#{x+1}@sample.com",
+		name: "sample-user-#{x+1}",
+		password: "password",
+		password_confirmation: "password",
+		role: "user"
+	)
+end
+
+puts "3 users created with role \"user\""

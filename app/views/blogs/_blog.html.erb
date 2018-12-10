@@ -1,8 +1,20 @@
-<tr>
-<td><%= blog.title.upcase %></td>
-<td><%= blog.body %></td>
-<td><%= link_to blog.status, portfolio_status_blog_path(blog) %></td>
-<td><%= link_to 'Show', blog %></td>
-<td><%= link_to 'Edit', edit_blog_path(blog)  if logged_in?(:site_admin) %></td>
-<td><%= link_to 'Delete Blog', blog, method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin)  %></td>
-</tr>
+<div class="blog-post">
+	<h2 class="blog-post-title" ><%= link_to blog.title.to_s.titleize, blog %></h2>
+	<% created_at = blog.created_at %>
+	<% updated_at = blog.updated_at %>
+	<% if created_at == updated_at %>
+		<p class="blog-post-meta">Created <%= distance_of_time_in_words(blog.created_at, Time.now) %> ago </p>
+	<% else %>
+	<p class="blog-post-meta">Created <%= distance_of_time_in_words(blog.created_at, Time.now) %> ago </br>
+	Updated <%= distance_of_time_in_words(blog.updated_at, Time.now) %> ago</p>
+	<% end %>
+	<p><%= blog.body %></p>
+	<% if logged_in?(:site_admin) %>
+		<p class="blog-post-meta">
+			<%= link_to blog.status, portfolio_status_blog_path(blog) %> /
+			<%= link_to 'Edit', edit_blog_path(blog) %> /
+			<%= link_to 'Delete Blog', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</p>
+	<% end %>
+	<hr>
+</div><!-- /.blog-post -->

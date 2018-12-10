@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
-  root to: 'blogs#index'
+  root to: 'pages#home'
+  #root to: 'blogs#index'
   
   get 'about-me', to: 'pages#about'
+  #get 'home', to: 'pages#home'
   get 'contact', to: 'pages#contact'
   get 'angular-items', to: 'portfolios#angular'
   get 'ror-items', to: 'portfolios#ror'
