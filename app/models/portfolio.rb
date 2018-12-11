@@ -10,6 +10,7 @@
 #  thumb_image :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  position    :integer
 #
 
 class Portfolio < ApplicationRecord
@@ -27,6 +28,7 @@ class Portfolio < ApplicationRecord
 	validates_presence_of :title, :body, :main_image, :thumb_image
 
 	scope :ruby_on_rails_items, -> { where(subtitle: "Ruby On Rails") }
+	scope :by_position, -> { order('position ASC') }
 	after_initialize :set_defaults	# This is a call back at the time of new action. 
 									# NEW action is the intialization phase.
 

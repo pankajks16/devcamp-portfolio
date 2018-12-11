@@ -5,7 +5,8 @@ class PortfoliosController < ApplicationController
 
 
 	def index
-		@portfolios_items = Portfolio.all.order("created_at DESC")
+		@portfolios_items = Portfolio.by_position
+		#@portfolios_items = Portfolio.all.order("created_at DESC")
 		#@portfolios_items = Portfolio.where(subtitle: "Ruby On Rails")
 		#@portfolios_items = Portfolio.where(subtitle: "Angular")
 		#@portfolios_items = Portfolio.all
