@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get 'angular-items', to: 'portfolios#angular'
   get 'ror-items', to: 'portfolios#ror'
 
-  put 'portfolios/sort', to: 'portfolios#sort'
+  put 'portfolios/sort', to: 'portfolios#sort'  # don't put this line below the following line else update action gets
+                                                # called everytime instead of sort action. Now they are seperate.
   resources :portfolios, except: [:show]  # except option excludes the generation of 
                                           # natural routes for the passed value in array.
   resources :blogs do 
