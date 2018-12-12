@@ -1,10 +1,10 @@
 <div class="album py-5 bg-light">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12" style="margin-bottom: 20px;">
+		<div class="col-md-12" style="margin-bottom: 20px;padding-left: 0px;">
 				<%= link_to '<i class="fa fa-plus"></i>&nbsp; New Portfolio'.html_safe , new_portfolio_path, class: 'btn btn-outline-success' if logged_in?(:site_admin)  %>
-			</div>
-				<%= render partial: 'portfolios_item', collection: @portfolios_items %>
+		</div>
+		<div class="row <%= "sortable" if logged_in?(:site_admin) %>">
+			<%= render partial: 'portfolios_item', collection: @portfolios_items %>
 		</div>
 	</div>
 </div>

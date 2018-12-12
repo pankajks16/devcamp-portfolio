@@ -9,15 +9,17 @@ Rails.application.routes.draw do
   get 'angular-items', to: 'portfolios#angular'
   get 'ror-items', to: 'portfolios#ror'
 
+  put 'portfolios/sort', to: 'portfolios#sort'  # don't put this line below the following line else update action gets
+                                                # called everytime instead of sort action. Now they are seperate.
   resources :portfolios, except: [:show]  # except option excludes the generation of 
-  										  # natural routes for the passed value in array.
+                                          # natural routes for the passed value in array.
   resources :blogs do 
     member do
       get 'portfolio_status'   # learn more on: http://guides.rubyonrails.org/routing.html#adding-member-routes
     end
   end
 
-  get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'	# we overriden the general route for show action 
+  get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'  # we overriden the general route for show action 
 
   # get 'pages/home'
 
