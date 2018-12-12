@@ -13,6 +13,14 @@ class PortfoliosController < ApplicationController
 		#@portfolios_items = Portfolio.all
 	end
 
+	def sort
+		params[:order].each do |key, value|
+			Portfolio.find(value[:id]).update!(position: value[:position]) rescue ''
+		end
+
+		render body: nil
+	end
+
 	def angular
 		@angular_items = Portfolio.angular_items
 	end
