@@ -27,6 +27,9 @@ class Portfolio < ApplicationRecord
 	include Placeholder
 	validates_presence_of :title, :body, :main_image, :thumb_image
 
+	mount_uploader :thumb_image, PortfolioUploader
+	mount_uploader :main_image, PortfolioUploader
+
 	scope :ruby_on_rails_items, -> { where(subtitle: "Ruby On Rails") }
 	scope :by_position, -> { order('position ASC') }
 	after_initialize :set_defaults	# This is a call back at the time of new action. 
