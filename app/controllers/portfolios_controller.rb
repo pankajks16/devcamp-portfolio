@@ -10,7 +10,6 @@ class PortfoliosController < ApplicationController
 		#@portfolios_items = Portfolio.where(subtitle: "Ruby On Rails")
 		#@portfolios_items = Portfolio.where(subtitle: "Angular")
 		#@portfolios_items = Portfolio.all
-		#@portfolios_items = Portfolio.all
 	end
 
 	def sort
