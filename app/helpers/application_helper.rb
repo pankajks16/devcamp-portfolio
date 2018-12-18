@@ -57,7 +57,7 @@ module ApplicationHelper
 # <#{tag_type}><a href="#{blogs_path}" class="#{style} #{active?(blogs_path)}">Blog</a></#{tag_type}>
 # <#{tag_type}><a href="#{portfolios_path}" class="#{style} #{active?(portfolios_path)}">Portfolio</a></#{tag_type}>
 # NAV
-# 	nav_links.html_safe
+# 	nav_links.html_safe	# The above step is called as heredoc. Search heredoc for more details
 # 	end
 
 	def nav_helper style, tag_type
