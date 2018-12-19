@@ -21,7 +21,8 @@ class Portfolio < ApplicationRecord
 	# foreign key constraint "fk_rails_cc5ab4a1c3" on table "technologies"
 	# DETAIL:  Key (id)=(11) is still referenced from table "technologies"
 
-	accepts_nested_attributes_for :technologies, 
+	accepts_nested_attributes_for :technologies,
+								  allow_destroy: true,
 								  reject_if: lambda { |attr| attr['name'].blank? }
 
 	validates_presence_of :title, :body

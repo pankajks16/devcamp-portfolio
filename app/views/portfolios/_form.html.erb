@@ -25,22 +25,38 @@
         <%= form.text_area :body, class: "form-control", required: true, rows: 10 %>
       </div>
     </div>
+  </div>
     
-    <div class="col-md-12">
+   <!--  <div class="col-md-12">
       <h3>Technologies :</h3>
         <div>
-          <%= form.fields_for :technologies do |technology_form| %>
+          <%#= form.fields_for :technologies do |technology_form| %>
             <div class="form-group">
-              <%= technology_form.label :name %>
-              <%= technology_form.text_field :name, class: "form-control", required: true %> 
+              <%#= technology_form.label :name %>
+              <%#= technology_form.text_field :name, class: "form-control", required: true %> 
             </div>
-          <% end %>
+          <%# end %>
         </div> 
     </div>
+ -->
 
-    <div class="col-md-3"></div>
-    <div class="col-md-6 form-group">
-      <%= form.submit "Save Portfolio Item", class: "form-control btn btn-primary" %>
+    <%#= '<h3>Technologies :</h3>'.html_safe if portfolio_item.technologies.count != 0 && params[:action] == "edit" %>
+    <h3>Technologies :</h3>
+    <div>
+      <%= form.fields_for :technologies do |technology_form| %>
+        <%= render 'technology_fields', f: technology_form %> 
+      <% end %>
     </div>
-    <div class="col-md-3"></div>
+    <div>
+      <%= link_to_add_association 'Add Technology', form, :technologies, class: 'btn btn-success' %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6 form-group">
+        <%= form.submit "Save Portfolio Item", class: "form-control btn btn-primary" %>
+      </div>
+      <div class="col-md-3"></div> 
+    </div>
+    
 <% end %>
