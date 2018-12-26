@@ -10,7 +10,7 @@
       </ul>
     </div> -->
     <% blog.errors.full_messages.each do |msg| %>
-      <%= js add_gritter(msg, title: "Pankaj's Portfolio's items", time: 2000) %>
+      <%= alert_generator msg %>
     <% end %>
   <% end %>
 
