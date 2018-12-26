@@ -1,5 +1,8 @@
 
 <%= form_with(model: portfolio_item, local: true) do |form| %>
+  <% portfolio_item.errors.full_messages.each do |msg| %>
+    <%= js add_gritter(msg, title: "Pankaj's Portfolio's items", time: 2000) %>
+  <% end %>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
