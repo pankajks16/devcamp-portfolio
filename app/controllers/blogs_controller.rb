@@ -16,7 +16,11 @@ class BlogsController < ApplicationController
     #@blogs = Blog.all           # This one is the default scaffold generated one.
     @page_title = "Blog | My Portfolio Blog"  # Here we are overriding the value of @page_title variable present in the 
                                               # application_controller file. So, this value gets render when index page is accessed.
-    @blogs = Blog.all.order('created_at DESC').page(params[:page]).per(4)                              
+    if logged_in?(:site_admin)
+      @blogs = Blog.all.order('created_at DESC').page(params[:page]).per(4)
+    else
+      @blogs = Blog.published.order('created_at DESC').page(params[:page]).per(4)                              
+    end
   end
 
   # GET /blogs/1
