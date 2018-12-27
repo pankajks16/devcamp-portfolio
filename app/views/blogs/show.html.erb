@@ -1,6 +1,7 @@
 <div class="col-md-8 blog-main mt20">
     <h2><%= @blog.title %></h2>
+    <h5><%= @blog.topic.title rescue '' %></h5>
     <%= link_to 'Edit', edit_blog_path(@blog)  if logged_in?(:site_admin)  %> <%= '|'  if logged_in?(:site_admin) %>
-    <%= link_to 'Back', blogs_path %></br>
+    <%= link_to 'Back', blogs_path %></br></br>
     <%= @blog.body %>  
 </div>
