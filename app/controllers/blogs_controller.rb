@@ -26,6 +26,7 @@ class BlogsController < ApplicationController
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    redirect_to blogs_path, notice: "You are not authorized to access this page" unless logged_in?(:site_admin) || @blog.published?
     @page_title = @blog.title
     @seo_keywords = @blog.title
   end
