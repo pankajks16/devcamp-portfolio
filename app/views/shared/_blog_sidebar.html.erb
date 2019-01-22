@@ -5,6 +5,12 @@
   </div>
 
   <div class="p-3">
+    <% @sidebar_topics.each do |topic| %>
+      <p><%= link_to topic.title, topic_path(topic) %></p>
+    <% end %>
+  </div>
+
+  <div class="p-3">
     <h4 class="font-italic">Elsewhere</h4>
     <ol class="list-unstyled row li-pd10">
       <li><a href="https://twitter.com/login?lang=en" target="_blank"><%= fa_icon "twitter" %></a></li>

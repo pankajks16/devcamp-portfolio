@@ -29,8 +29,10 @@ Rails.application.routes.draw do
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  
+  resources :topics, only: [:index, :show]
   match '*unmatched' , to: redirect('/'), via: :all  # Used for redirection to root when no route matches
+
   # reference for above is:
   # 1. https://rollbar.com/blog/top-10-ruby-on-rails-errors/
   # 2. https://edgeguides.rubyonrails.org/routing.html#redirection
