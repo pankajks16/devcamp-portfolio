@@ -1,7 +1,13 @@
 <div class="col-md-8 blog-main mt20">
     <h2><%= @blog.title %></h2>
-    <h5><%= @blog.topic.title rescue '' %></h5>
+    <nav aria-label="breadcrumb row">
+		  <ol class="breadcrumb">
+		    <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+		    <li class="breadcrumb-item"><%= link_to @blog.topic.title, topic_path(@blog.topic) %></li>
+		    <li class="breadcrumb-item active" aria-current="page"><%= @blog.title %></li>
+		  </ol>
+		</nav>
     <%= link_to 'Edit', edit_blog_path(@blog)  if logged_in?(:site_admin)  %> <%= '|'  if logged_in?(:site_admin) %>
     <%= link_to 'Back', blogs_path %></br></br>
-    <%= @blog.body %>  
+    <%= markdown @blog.body %>  
 </div>
