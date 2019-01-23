@@ -8,7 +8,7 @@
 	<p class="blog-post-meta">Created <%= distance_of_time_in_words(blog.created_at, Time.now) %> ago </br>
 	Updated <%= distance_of_time_in_words(blog.updated_at, Time.now) %> ago</p>
 	<% end %>
-	<p><%= blog.body %></p>
+	<p><%= markdown blog.body %></p>
 	<% if logged_in?(:site_admin) %>
 		<p class="blog-post-meta">
 			<%= link_to blog.status, portfolio_status_blog_path(blog) %> /
