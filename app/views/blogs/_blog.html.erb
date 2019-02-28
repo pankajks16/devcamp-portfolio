@@ -10,11 +10,13 @@
 	<% end %>
 	<p><%= markdown blog.body %></p>
 	<% if logged_in?(:site_admin) %>
-		<p class="blog-post-meta">
-			<%= link_to blog.status, portfolio_status_blog_path(blog) %> /
-			<%= link_to 'Edit', edit_blog_path(blog) %> /
-			<%= link_to 'Delete Blog', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
-		</p>
+		<nav class="breadcrumb">
+			<p class="">
+				<%= link_to blog.status, portfolio_status_blog_path(blog) %> /
+				<%= link_to 'Edit', edit_blog_path(blog) %> /
+				<%= link_to 'Delete Blog', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+			</p>
+		</nav>
 	<% end %>
 	<hr>
 </div><!-- /.blog-post -->
