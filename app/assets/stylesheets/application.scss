@@ -177,16 +177,12 @@ body {
   color: white !important;
 }
 
+.app-card-container {
+  color: black;
+  text-align: left;
+}
 
-
-
-
-
-
-
-
-
-
-
-
+.app-card-container > .card {
+  padding: 20px;
+}
 
