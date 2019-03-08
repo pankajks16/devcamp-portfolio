@@ -5,6 +5,24 @@
 			<div class="col-md-6">
 				<%#= image_tag "https://www.airforce-technology.com/wp-content/uploads/sites/4/2017/09/4l-image-21.jpg", width: 300 %>
 				<%= image_tag "rafale.jpg", width: '100%' %>
+
+				<div class="skills">
+					<% @skills.each do |skill| %>
+						<div class="skill">
+							<h4><%= skill.title %></h4>
+							<div class="progress">
+								<div 
+									class="progress-bar progress-bar-striped bg-warning"
+									role="progressbar"
+									aria-valuenow="<%= skill.percent_utilized %>"
+									aria-valuemax="100"
+									style="width: <%= skill.percent_utilized %>%" 
+								>
+								</div>
+							</div>
+						</div>
+					<% end %>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<p>I'm a ruby developer based in garden city called Bengaluru .... and with an essence of love it is also called as  Namma Bengaluru</p>
